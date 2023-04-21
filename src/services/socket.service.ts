@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import DonationModel from '../entities/donation/donation.model';
 import { UserInterface } from '../entities/user/user.model';
 
-const regex = /(\S+)/gim;
+const regex = /#(\S+)/gim;
 
 type EventDataMessageType = {
     name: string;
