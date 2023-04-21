@@ -46,7 +46,7 @@ export default class SocketService {
     open(): void {
         this.client.on('event', (eventData: EventDataType) => {
             if (eventData.type === this.type) {
-                console.log('[socket]', this.type, eventData.event_id);
+                console.log(`[socket] ${this.type} ${eventData.event_id} received`);
                 if (eventData.message.length > 0) {
                     Promise.all(
                         eventData.message.map(async (donation: EventDataMessageType) => {
@@ -66,6 +66,8 @@ export default class SocketService {
                                     });
 
                                     await newDonation.save();
+                                    console.log(`[socket] Donation saved : ${donation.from} has donated ${donation.amount} ${donation.currency} « ${donation.message} »`);
+
                                     return newDonation;
                                 }
                             } catch (e) {
