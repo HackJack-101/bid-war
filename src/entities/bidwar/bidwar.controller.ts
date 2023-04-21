@@ -20,10 +20,10 @@ export default class BidWarController {
             filters.isTest = false;
         }
 
-        const first = await DonationModel.find({ ...filters, hashtag: firstHashtag })
+        const first = await DonationModel.find({ ...filters, hashtag: firstHashtag.toLocaleLowerCase(['fr-FR', 'en-US']) })
             .select({ amount: 1 })
             .lean();
-        const second = await DonationModel.find({ ...filters, hashtag: secondHashtag })
+        const second = await DonationModel.find({ ...filters, hashtag: secondHashtag.toLocaleLowerCase(['fr-FR', 'en-US']) })
             .select({ amount: 1 })
             .lean();
 

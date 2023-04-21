@@ -27,6 +27,14 @@ const Donation = new Schema<DonationInterface>(
     },
 );
 
+Donation.pre('save', function (next) {
+    if (this.hashtag) {
+        this.hashtag = this.hashtag.toLocaleLowerCase(['fr-FR', 'en-US']);
+    }
+
+    return next();
+});
+
 Donation.index({ createdAt: 1 });
 Donation.index({ updatedAt: 1 });
 
