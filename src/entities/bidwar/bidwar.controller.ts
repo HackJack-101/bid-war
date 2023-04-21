@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import UserModel, { UserInterface } from '../user/user.model';
+import UserModel from '../user/user.model';
 import DonationModel, { DonationInterface } from '../donation/donation.model';
 
 export default class BidWarController {
