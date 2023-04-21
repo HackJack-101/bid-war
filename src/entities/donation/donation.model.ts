@@ -4,6 +4,7 @@ import mongooseLeanVirtuals from 'mongoose-lean-virtuals';
 
 export interface DonationInterface {
     _slID: string;
+    _messageID?: number;
     amount: number;
     hashtag: string;
     isTest: boolean;
@@ -14,6 +15,7 @@ export interface DonationInterface {
 const Donation = new Schema<DonationInterface>(
     {
         _slID: { type: String, unique: true, required: true },
+        _messageID: { type: Number },
         amount: { type: Number, required: true },
         hashtag: { type: String, required: true },
         isTest: { type: Boolean, index: true, required: true, default: false },

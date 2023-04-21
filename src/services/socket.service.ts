@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import DonationModel from '../entities/donation/donation.model';
 import { UserInterface } from '../entities/user/user.model';
 
-const regex = /#(\S+)/gim;
+const regex = /(\S+)/gim;
 
 type EventDataMessageType = {
     name: string;
@@ -57,11 +57,12 @@ export default class SocketService {
                                 }
                                 if (regexResults.length > 0) {
                                     const newDonation = new DonationModel({
-                                        username: this.username,
-                                        isTest: donation.isTest ?? false,
+                                        _messageID: donation.id,
+                                        _slID: donation._id,
                                         amount: donation.amount,
                                         hashtag: regexResults[0],
-                                        _slID: donation._id,
+                                        isTest: donation.isTest ?? false,
+                                        username: this.username,
                                     });
 
                                     await newDonation.save();
