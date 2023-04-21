@@ -1,7 +1,7 @@
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import enforce from 'express-sslify';
-import express from 'express';
+import express, { Request, Response } from 'express';
 import helmet from 'helmet';
 
 import configuration from './configuration';
@@ -27,5 +27,6 @@ app.use('*', (req, res, next) => {
     return next();
 });
 app.use('/api/', routes);
+app.get('/', (req: Request, res: Response) => res.sendStatus(200));
 
 export default app;
