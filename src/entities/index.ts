@@ -14,6 +14,5 @@ router.get('/health', (req, res) =>
 
 router.use('/user', userRoutes);
 router.use('/bidwar', bidwarRoutes);
-router.use('*', (req, res) => res.sendStatus(404));
 
 export default router;
