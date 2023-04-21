@@ -4,9 +4,11 @@ import enforce from 'express-sslify';
 import express from 'express';
 import helmet from 'helmet';
 
-import configuration from './configuration.js';
-import routes from './entities/index.js';
+import configuration from './configuration';
+import routes from './entities';
+import { openSockets } from './services/user.service';
 
+openSockets();
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));

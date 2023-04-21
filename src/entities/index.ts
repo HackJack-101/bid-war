@@ -1,5 +1,7 @@
 import { Router } from 'express';
-import authRoutes from './auth/auth.routes.js';
+
+import userRoutes from './user/user.routes';
+import bidwarRoutes from './bidwar/bidwar.routes';
 
 const router = Router();
 
@@ -10,7 +12,8 @@ router.get('/health', (req, res) =>
     }),
 );
 
-router.use('/auth', authRoutes);
+router.use('/user', userRoutes);
+router.use('/bidwar', bidwarRoutes);
 router.use('*', (req, res) => res.sendStatus(404));
 
 export default router;
