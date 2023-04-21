@@ -3,6 +3,7 @@ import compression from 'compression';
 import enforce from 'express-sslify';
 import express, { Request, Response } from 'express';
 import helmet from 'helmet';
+import cors from 'cors';
 
 import configuration from './configuration';
 import routes from './entities';
@@ -19,6 +20,7 @@ if (configuration.env === 'clever') {
 }
 
 app.use(helmet({ crossOriginEmbedderPolicy: false }));
+app.use(cors());
 app.use(compression());
 
 app.use('*', (req, res, next) => {
