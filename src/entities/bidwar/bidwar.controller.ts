@@ -37,11 +37,11 @@ export default class BidWarController {
         return res.json({
             firstResult: {
                 hashtag: firstHashtag,
-                amount: firstAmount,
+                amount: parseFloat(firstAmount.toFixed(2)),
             },
             secondResult: {
                 hashtag: secondHashtag,
-                amount: secondAmount,
+                amount: parseFloat(secondAmount.toFixed(2)),
             },
         });
     }
